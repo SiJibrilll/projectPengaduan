@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'nik',
         'telepon',
-        'google_token'
+        'google_id'
     ];
 
     /**
