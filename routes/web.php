@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// -- redirect to SSO login or register
+Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
+
+// -- callback after SSO login or register
+Route::get('/auth/google/callback', [GoogleController::class, 'callback']);

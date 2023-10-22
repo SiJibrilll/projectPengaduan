@@ -8,6 +8,8 @@
 <body>
   <h1 class="text-3xl font-bold underline">
     Welcome page
+
+    <a href="/auth/google/redirect">Login with google</a>
   </h1>
 </body>
 </html>

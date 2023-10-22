@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('nik')->unique()->nullable();
             $table->integer('telepon')->nullable();
+            $table->string('google_token');
             $table->rememberToken();
             $table->timestamps();
         });
