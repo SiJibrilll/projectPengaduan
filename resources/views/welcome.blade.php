@@ -1,15 +1,16 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
-</head>
-<body>
-  <h1 class="text-3xl font-bold underline">
-    Welcome page
-
-    <a href="/auth/google/redirect">Login with google</a>
+<x-pelapor>
+  <h1 class="text-3xl font-bold">
+      Welcome page
   </h1>
-</body>
-</html>
+
+  
+  @auth
+  <h2> Hello {{auth()->user()->username}} </h2>
+  <form action="/logout" method="post">
+    @csrf
+    <button type="submit">Logout</button>
+  </form>
+  @else
+  <a href="/login" class="underline">Login</a>
+  @endauth
+</x-pelapor>

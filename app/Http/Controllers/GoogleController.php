@@ -29,10 +29,10 @@ class GoogleController extends Controller
         
                 $user->assignRole('pelapor'); // give user a pelapor role
         
-                Auth::login($user); // login the user
+                Auth::login($user, true); // login the user
             });
 
-            return redirect('/');
+            return redirect('/beranda');
         }
         catch (\Throwable $e){
             dd('error!! ' . $e);
