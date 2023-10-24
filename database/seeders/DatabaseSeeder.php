@@ -17,9 +17,20 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'pelapor']);
         Role::create(['name' => 'petugas']);
         Role::create(['name' => 'admin']); 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $admin = \App\Models\User::factory()->create([
+            'username' => 'admin',
+            'email' => 'admin@LaporIND.com',
+            'password' => 12345678
+        ]);
+
+        $admin->assignRole('admin');
+
+        $petugas = \App\Models\User::factory()->create([
+            'username' => 'petugas',
+            'email' => 'petugas@LaporIND.com',
+            'password' => 12345678
+        ]);
+
+        $petugas->assignRole('petugas');
     }
 }

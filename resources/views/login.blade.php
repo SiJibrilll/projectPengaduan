@@ -5,6 +5,9 @@
         <input name="email">
         <h3>password</h3>
         <input name="password">
+        @error('email')
+            <p> $error </p>
+        @enderror
         <button type="submit" class="">Kirim</button>
     </form>
 

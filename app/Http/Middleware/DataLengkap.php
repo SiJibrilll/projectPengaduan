@@ -17,7 +17,12 @@ class DataLengkap
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth()->user();
-        if (!null == $user->nik || !null == $user->telepon || $user->hasRole('admin') || $user->hasRole('petugas')) {
+
+        if ($user->hasRole('admin') || $user->hasRole('petugas')) {
+            return $next($request);
+        }
+        
+        if (!null == $user->nik || !null == $user->telepon) {
             return $next($request);
         }
         return redirect('/lengkapi-data');

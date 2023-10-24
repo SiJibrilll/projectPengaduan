@@ -15,7 +15,7 @@ class AuthController extends Controller
 {
     // Validate the form data
     $request->validate([
-        'email' => 'required|email|unique:users',
+        'email' => 'required|email',
         'password' => 'required|min:6'
     ]);
 
@@ -23,7 +23,7 @@ class AuthController extends Controller
 
     if (Auth::attempt($credentials)) {
         // Authentication passed...
-        return redirect()->intended('pelapor.beranda');
+        return redirect()->intended('/beranda');
     } else {
         // Authentication failed...
         return back()->withErrors([
