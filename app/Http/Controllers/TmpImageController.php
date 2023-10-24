@@ -12,17 +12,18 @@ class TmpImageController extends Controller
     {
         
         if (!$request->hasFile('image')) {
-            return '';
+            return 'ERROR';
         }
 
-        $image = $request->file('image');
+        $image = $request->file('image')[0];
         $filename = $image->getClientOriginalName();
         $folder = uniqid('image-', true);
         $image->storeAs('images/tmp/' . $folder, $filename);
 
+        
         TmpImage::create([
             'folder' => $folder,
-            'gambar' => $image
+            'gambar' => $filename
         ]);
 
         return $folder;

@@ -8,12 +8,15 @@
     </div>
 </a>
 
-<button>Buat aduan</button>
+<a href="/aduan/create">Buat aduan</a>
 
 <h1>Aduan saya</h1>
 @foreach ($aduans as $aduan)
-    <div>
+<a href="/aduan/show/{{$aduan->id}}">
+    <div class="outline">
         <h1> {{$aduan->judul}} </h1>
+        <p> {{$aduan->deskripsi}}</p>
     </div>
+</a>
 @endforeach
 </x-pelapor>

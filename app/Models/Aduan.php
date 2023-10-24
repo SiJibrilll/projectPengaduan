@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AduanModel extends Model
+class Aduan extends Model
 {
     use HasFactory;
 
@@ -18,5 +18,9 @@ class AduanModel extends Model
 
     function user() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    function gambar() {
+        return $this->hasMany(GambarAduan::class, 'aduan_id');
     }
 }

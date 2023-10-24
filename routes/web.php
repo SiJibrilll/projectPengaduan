@@ -50,8 +50,12 @@ Route::post('/lengkapi-data/store', [LengkapiDataController::class, 'store']);
 
 Route::get('/beranda', [userController::class, 'beranda'])->middleware('dataLengkap');
 
-Route::get('/aduan', [AduanController::class, 'create']);
+Route::get('/aduan/create', [AduanController::class, 'create']);
 
 Route::post('/tmp-image/create', [TmpImageController::class, 'create']);
 
 Route::delete('/tmp-image/delete', [TmpImageController::class, 'delete']);
+
+Route::post('/aduan/store', [AduanController::class, 'store']);
+
+Route::get('/aduan/show/{aduan}', [AduanController::class, 'show']);

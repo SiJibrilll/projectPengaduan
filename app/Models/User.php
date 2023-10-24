@@ -48,6 +48,6 @@ class User extends Authenticatable
     ];
 
     function aduan() {
-        return $this->hasMany(AduanModel::class, 'user_id');
+        return $this->hasMany(Aduan::class, 'user_id');
     }
 }

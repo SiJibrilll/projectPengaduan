@@ -9,7 +9,7 @@ class userController extends Controller
 {
     function beranda()
     {
-        $aduans = Auth()->user()->aduan();
+        $aduans = Auth()->user()->aduan()->get();
         return view('pelapor.beranda', ['aduans' => $aduans]);
     }
 }
