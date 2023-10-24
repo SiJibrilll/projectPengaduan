@@ -32,7 +32,7 @@ Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
 Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
 
 // -- login page
-Route::get('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 
 // -- authenticate
 Route::post('/authenticate', [AuthController::class, 'authenticate']);
@@ -44,18 +44,30 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 //================================= CRUD ==============================================
 
-Route::get('/lengkapi-data', [LengkapiDataController::class, 'create']);
+// -- general
+Route::group(['middleware' => ['auth']], function () {
+    
+    // -- masuk ke beranda
+    Route::get('/beranda', [userController::class, 'beranda'])->middleware('dataLengkap');
+    
+    // -- lengkapi data
+    Route::get('/lengkapi-data', [LengkapiDataController::class, 'create']);
+    
+    // -- simpan lengkapi data
+    Route::post('/lengkapi-data/store', [LengkapiDataController::class, 'store']);
+});
 
-Route::post('/lengkapi-data/store', [LengkapiDataController::class, 'store']);
 
-Route::get('/beranda', [userController::class, 'beranda'])->middleware('dataLengkap');
+// -- fitur pelapor
+Route::group(['middleware' => ['role:pelapor', 'auth', 'dataLengkap']], function () {
 
-Route::get('/aduan/create', [AduanController::class, 'create']);
-
-Route::post('/tmp-image/create', [TmpImageController::class, 'create']);
-
-Route::delete('/tmp-image/delete', [TmpImageController::class, 'delete']);
-
-Route::post('/aduan/store', [AduanController::class, 'store']);
-
-Route::get('/aduan/show/{aduan}', [AduanController::class, 'show']);
+    Route::get('/aduan/create', [AduanController::class, 'create']);
+    
+    Route::post('/tmp-image/create', [TmpImageController::class, 'create']);
+    
+    Route::delete('/tmp-image/delete', [TmpImageController::class, 'delete']);
+    
+    Route::post('/aduan/store', [AduanController::class, 'store']);
+    
+    Route::get('/aduan/show/{aduan}', [AduanController::class, 'show']);
+});

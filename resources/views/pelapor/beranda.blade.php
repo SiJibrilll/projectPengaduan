@@ -1,7 +1,7 @@
 <x-pelapor>
 
 <a href="">
-    <div> 
+    <div>
         <h1> {{auth()->user()->username}}</h1>
         <h3>{{auth()->user()->telepon}}</h3>
         <p class="underline">Ketuk untuk lihat profil</p>
@@ -19,4 +19,9 @@
     </div>
 </a>
 @endforeach
+
+<form action="/logout" method="POST">
+    @csrf
+    <button type="submit" class="btn btn-primary">Logout sementara</button>
+</form>
 </x-pelapor>

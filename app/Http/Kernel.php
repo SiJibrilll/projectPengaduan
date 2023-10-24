@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\DataLengkap;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Spatie\Permission\Middlewares\customSpatie;
 
 class Kernel extends HttpKernel
 {
@@ -44,6 +45,9 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'role' => [
+            \App\Http\Middleware\RoleMiddleware::class,
+        ],
     ];
 
     /**
@@ -65,6 +69,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'dataLengkap' => \App\Http\Middleware\DataLengkap::class
+        'dataLengkap' => \App\Http\Middleware\DataLengkap::class,
+        'role' => \App\Http\Middleware\customSpatie::class
     ];
 }
