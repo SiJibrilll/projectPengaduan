@@ -38,4 +38,8 @@ class TmpImageController extends Controller
 
         return response()->noContent();
     }
+
+    function load(Request $request) {
+        
+    }
 }

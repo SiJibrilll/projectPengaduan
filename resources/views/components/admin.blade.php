@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Document</title>
+    @livewireStyles
 </head>
 <body>
     {{
         $slot
     }}
+    @livewireScripts
 </body>
 </html>
