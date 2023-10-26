@@ -37,10 +37,10 @@ class AduanController extends Controller
 
         // simpan tiap gambar yang disertakan
         foreach ($request->image as $image) {
-            $tmp = TmpImage::where('folder', $image)->first();
-            Storage::copy('images/tmp/'. $image .'/' . $tmp->gambar, 'images/gambarAduan/' . $image .'/' . $tmp->gambar);
+            $tmp = TmpImage::find($image);
+            Storage::copy('images/tmp/'. $tmp->folder .'/' . $tmp->gambar, 'images/gambarAduan/' . $tmp->folder .'/' . $tmp->gambar);
             GambarAduan::create([
-                'gambar' => $image,
+                'gambar' => $tmp->folder . '/' . $tmp->gambar,
                 'aduan_id' => $aduan->id
             ]);
         }

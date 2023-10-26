@@ -21,12 +21,12 @@ class TmpImageController extends Controller
         $image->storeAs('images/tmp/' . $folder, $filename);
 
         
-        TmpImage::create([
+        $tmp = TmpImage::create([
             'folder' => $folder,
             'gambar' => $filename
         ]);
 
-        return $folder;
+        return $tmp->id;
     }
 
     function delete() {
