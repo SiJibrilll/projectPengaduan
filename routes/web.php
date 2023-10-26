@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AduanController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GambarAduanController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LengkapiDataController;
 use App\Http\Controllers\TmpImageController;
@@ -44,7 +45,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 //================================= CRUD ==============================================
 
-// -- fitur general
+// -- fitur lengkapi data
 Route::group(['middleware' => ['auth']], function () {
     
     // -- lengkapi data
@@ -66,18 +67,27 @@ Route::group(['middleware' => ['auth', 'role:pelapor|admin|petugas']], function 
 // -- fitur pelapor
 Route::group(['middleware' => ['role:pelapor', 'auth', 'dataLengkap']], function () {
 
+    // -- kirim form buat aduan
     Route::get('/aduan/create', [AduanController::class, 'create']);
     
+    // -- simpan tmp image
     Route::post('/tmp-image/create', [TmpImageController::class, 'create']);
     
+    // -- hapus tmp image
     Route::delete('/tmp-image/delete', [TmpImageController::class, 'delete']);
     
+    // -- simpan aduan
     Route::post('/aduan/store', [AduanController::class, 'store']);
+
+    // -- tampilkan form edit aduan
+    Route::get('/aduan/edit/{aduan}', [AduanController::class, 'edit']);
+
+    Route::get('/gambar-aduan/edit', [GambarAduanController::class, 'edit']);
 });
 
 // -- fitur admin dan petugas
 Route::group(['middleware' => ['role:admin|petugas', 'auth']], function () {
 
     // -- route ke menu kelola aduan
-    Route::get('/admin/aduan', [AduanController::class, 'index']);
+    Route::get('/aduan', [AduanController::class, 'index']);
 });

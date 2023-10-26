@@ -57,18 +57,18 @@ class AduanController extends Controller
         }
         
         // jika pelapor biasa, kirim ke aduan pelapor
-        return view('pelapor.aduan', ['aduan' => $aduan]);
+        return view('pelapor.aduan', ['aduan' => $aduan, 'html' => 'pelapor']);
     }
 
     // -- show edit form
     function edit(Aduan $aduan) {
         // jika aduan ini sudah diangkat dari status diajukan
-        if ('diajukan' == $aduan->status) {
-            return redirect('/aduan/show/'. $aduan->id); // maka tidak bisa lagi di edit
+        if (!'diajukan' == $aduan->status) {
+            return redirect('/aduan/show/'. $aduan->id); // maka tidak bisa lagi di edit, kembali ke halaman detail aduan
         }
 
         // jika masih, maka bisa di edit
-        return view('pelapor.editAduan');
+        return view('pelapor.editAduan', ['aduan' => $aduan]);
     }
 
     // save aduan changes
