@@ -99,8 +99,4 @@ class AduanController extends Controller
 
         return redirect('/beranda');
     }
-
-    function testDelete() {
-        dd('alwowaowaka');
-    }
 }
