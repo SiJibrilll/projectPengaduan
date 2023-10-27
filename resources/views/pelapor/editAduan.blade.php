@@ -1,5 +1,5 @@
 <x-pelapor>
-    <form action="/aduan/update" method="POST" enctype="multipart/form-data">
+    <form action="/aduan/update/{{$aduan->id}}" method="POST" enctype="multipart/form-data">
         @csrf
         <h1> Judul </h1>
         <input type="text" name="judul" id="" placeholder="Masukan inti aduan disini" value="{{$aduan->judul}}">

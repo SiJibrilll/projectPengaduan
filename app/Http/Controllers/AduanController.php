@@ -36,13 +36,16 @@ class AduanController extends Controller
         ]);
 
         // simpan tiap gambar yang disertakan
-        foreach ($request->image as $image) {
+        foreach (($request->image ?? array()) as $image) {
             $tmp = TmpImage::find($image);
             Storage::copy('images/tmp/'. $tmp->folder .'/' . $tmp->gambar, 'images/gambarAduan/' . $tmp->folder .'/' . $tmp->gambar);
             GambarAduan::create([
                 'gambar' => $tmp->folder . '/' . $tmp->gambar,
                 'aduan_id' => $aduan->id
             ]);
+            // -- hapus tmp image
+            Storage::deleteDirectory('images/tmp/'. $tmp->folder);
+            $tmp->delete();
         }
 
         return redirect('/beranda');
@@ -60,6 +63,7 @@ class AduanController extends Controller
         return view('pelapor.aduan', ['aduan' => $aduan, 'html' => 'pelapor']);
     }
 
+
     // -- show edit form
     function edit(Aduan $aduan) {
         // jika aduan ini sudah diangkat dari status diajukan
@@ -72,29 +76,33 @@ class AduanController extends Controller
     }
 
     // save aduan changes
-    function update(Request $request) {
+    function update(Aduan $aduan, Request $request) {
         // validasi data
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required'
         ]);
 
-        // buat record aduan
-        $aduan = Aduan::create([
-            'user_id' => Auth()->user()->id,
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'status' => 'diajukan'
-        ]);
+        // update aduan
+        Aduan::find($aduan->id)->update($request->all());
+
+        // hapus semua gambar lama
+        foreach ($aduan->gambar as $gambar) {
+            Storage::deleteDirectory('images/gambarAduan/'. dirname($gambar->gambar));
+            $gambar->delete();
+        }
 
         // simpan tiap gambar yang disertakan
-        foreach ($request->image as $image) {
-            $tmp = TmpImage::where('folder', $image)->first();
-            Storage::copy('images/tmp/'. $image .'/' . $tmp->gambar, 'images/gambarAduan/' . $image .'/' . $tmp->gambar);
+        foreach (($request->image ?? array()) as $image) {
+            $tmp = TmpImage::find($image);
+            Storage::copy('images/tmp/'. $tmp->folder .'/' . $tmp->gambar, 'images/gambarAduan/' . $tmp->folder .'/' . $tmp->gambar);
             GambarAduan::create([
-                'gambar' => $image,
+                'gambar' => $tmp->folder . '/' . $tmp->gambar,
                 'aduan_id' => $aduan->id
             ]);
+            // -- hapus tmp image
+            Storage::deleteDirectory('images/tmp/'. $tmp->folder);
+            $tmp->delete();
         }
 
         return redirect('/beranda');

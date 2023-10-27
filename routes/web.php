@@ -7,6 +7,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LengkapiDataController;
 use App\Http\Controllers\TmpImageController;
 use App\Http\Controllers\userController;
+use App\Models\Aduan;
 use App\Models\TmpImage;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,9 @@ Route::group(['middleware' => ['role:pelapor', 'auth', 'dataLengkap']], function
     Route::get('/aduan/edit/{aduan}', [AduanController::class, 'edit']);
 
     Route::get('/gambar-aduan/edit', [GambarAduanController::class, 'edit']);
+
+    // simpan perubahan
+    Route::post('/aduan/update/{aduan}', [AduanController::class, 'update']);
 });
 
 // -- fitur admin dan petugas
