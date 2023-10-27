@@ -1,15 +1,3 @@
 <x-admin>
-    @foreach ($aduan->gambar as $gambar)
-    <img src="{{asset("storage/images/gambarAduan/" . $gambar->gambar)}}">
-    @endforeach
-    
-    <p> {{$aduan->judul}} </p>
-
-    <p> {{$aduan->deskripsi}} </p>
-    
-    <p> {{date("jS F, Y", strtotime($aduan->created_at))}}</p>
-    
-    @isset($aduan->tanggapan)
-        <p> EMUUU OTORIIIII </p>
-    @endisset
+    <x-aduan :aduan="$aduan" />
 </x-admin>

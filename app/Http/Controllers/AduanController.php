@@ -75,6 +75,7 @@ class AduanController extends Controller
         return view('pelapor.editAduan', ['aduan' => $aduan]);
     }
 
+    
     // save aduan changes
     function update(Aduan $aduan, Request $request) {
         // validasi data
