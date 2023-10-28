@@ -9,6 +9,16 @@
     @livewireStyles
 </head>
 <body>
+    <aside>
+        <nav>
+            <a href="/aduan">Kelola Aduan</a>
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
+        </nav>
+    </aside>
+
     {{
         $slot
     }}

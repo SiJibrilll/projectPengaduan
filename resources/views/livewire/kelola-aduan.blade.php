@@ -4,7 +4,7 @@
     <h1> Hello world im from live wire</h1>
     {{-- 'diajukan', 'diterima', 'diproses', 'selesai', 'ditolak' --}}
     <button wire:click='getAduan("diajukan")'>Diajukan</button>
-    <button wire:click='getAduan("diproses")'>Diterima</button>
+    <button wire:click='getAduan("diterima")'>Diterima</button>
     <button wire:click='getAduan("diproses")'>Diproses</button>
     <button wire:click='getAduan("selesai")'>Selesai</button>
     <button wire:click='getAduan("ditolak")'>Ditolak</button>
