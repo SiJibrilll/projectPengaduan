@@ -8,8 +8,6 @@
 
 <p> {{date("jS F, Y", strtotime($aduan->created_at))}}</p>
 
-<p> Status: {{$aduan->status}} </p>
-
 @if ('diajukan' == $aduan->status && $aduan->user_id == Auth()->user()->id)
     <a class="underline" href="/aduan/edit/{{$aduan->id}}">Ubah Aduan</a>
 @endif
@@ -20,7 +18,7 @@
 
 <div class="flex inline-block">
     <h1 class="mr-5"> Tanggapan </h1>
-    @if((Auth()->user()->hasRole('admin') || Auth()->user()->hasRole('petugas')) && 'diajukan' !== $aduan->status)
+    @if(Auth()->user()->hasRole('admin') || Auth()->user()->hasRole('petugas'))
         <a href="/tanggapan/create"> Tambah tanggapan</a>
     @endif
 </div>
