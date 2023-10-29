@@ -25,4 +25,22 @@ class TanggapanController extends Controller
 
         return redirect('/aduan/show/' . $validatedData['aduan_id']);
     }
+
+    function edit(Tanggapan $tanggapan) {
+        return view('admin.editTanggapan', ['tanggapan' => $tanggapan]);
+    }
+
+    function update(Tanggapan $tanggapan, Request $request) {
+        $validatedData = $request->validate([
+            'tanggapan' => 'required',
+            'status' => 'required|in:0,1,2,3,4',
+            'aduan_id' => 'required'
+        ]);
+
+
+        $validatedData['user_id'] = Auth()->user()->id;
+        $tanggapan->update($validatedData);
+
+        return redirect('/aduan/show/' . $validatedData['aduan_id']);
+    }
 }

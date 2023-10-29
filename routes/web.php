@@ -101,4 +101,11 @@ Route::group(['middleware' => ['role:admin|petugas', 'auth']], function () {
 
     // -- simpan tanggapan
     Route::post('/tanggapan/store', [TanggapanController::class, 'store']);
+
+    // -- show menu edit tanggapan
+    Route::get('/tanggapan/edit/{tanggapan}', [TanggapanController::class, 'edit']);
+
+    // -- simpan perubahan tanggapan
+    Route::post('/tanggapan/update/{tanggapan}', [TanggapanController::class, 'update']);
+
 });

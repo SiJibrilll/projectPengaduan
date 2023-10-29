@@ -25,7 +25,9 @@
 
 @isset($aduan->tanggapan)
     @foreach ($aduan->tanggapan as $tanggapan)
-        <p> {{$tanggapan->tanggapan}} </p> 
+        <a href="/tanggapan/edit/{{$tanggapan->id}}">
+            <p> {{$tanggapan->tanggapan}} </p> 
+        </a>
     @endforeach
 @else
 <p> Belum ada tanggapan </p>
