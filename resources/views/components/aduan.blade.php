@@ -19,13 +19,13 @@
 <div class="flex inline-block">
     <h1 class="mr-5"> Tanggapan </h1>
     @if(Auth()->user()->hasRole('admin') || Auth()->user()->hasRole('petugas'))
-        <a href="/tanggapan/create"> Tambah tanggapan</a>
+        <a href="/tanggapan/create/{{$aduan->id}}"> Tambah tanggapan</a>
     @endif
 </div>
 
 @isset($aduan->tanggapan)
     @foreach ($aduan->tanggapan as $tanggapan)
-        <p> test </p> 
+        <p> {{$tanggapan->tanggapan}} </p> 
     @endforeach
 @else
 <p> Belum ada tanggapan </p>

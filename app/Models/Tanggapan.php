@@ -15,4 +15,12 @@ class Tanggapan extends Model
         'user_id',
         'aduan_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function aduan(){
+        return $this->belongsTo(Aduan::class, 'aduan_id');
+    }
 }

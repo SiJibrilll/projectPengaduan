@@ -23,4 +23,8 @@ class Aduan extends Model
     function gambar() {
         return $this->hasMany(GambarAduan::class, 'aduan_id');
     }
+
+    public function tanggapan(){
+        return $this->hasMany(Tanggapan::class, 'aduan_id');
+    }
 }
