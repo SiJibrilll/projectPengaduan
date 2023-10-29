@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GambarAduanController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LengkapiDataController;
+use App\Http\Controllers\TanggapanController;
 use App\Http\Controllers\TmpImageController;
 use App\Http\Controllers\userController;
 use App\Models\Aduan;
@@ -94,4 +95,7 @@ Route::group(['middleware' => ['role:admin|petugas', 'auth']], function () {
 
     // -- route ke menu kelola aduan
     Route::get('/aduan', [AduanController::class, 'index']);
+
+    // -- route ke form tanggapan
+    Route::get('/tanggapan/create', [TanggapanController::class, 'create']);
 });
