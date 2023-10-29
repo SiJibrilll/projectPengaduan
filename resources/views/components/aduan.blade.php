@@ -18,13 +18,10 @@
     <livewire:ubah-status-aduan :aduan='$aduan'/>
 @endif
 
-<button onclick="Livewire.dispatch('openModal', { component: 'create-tanggapan-modal' })">Create tanggapan</button>
-
 <div class="flex inline-block">
     <h1 class="mr-5"> Tanggapan </h1>
     @if((Auth()->user()->hasRole('admin') || Auth()->user()->hasRole('petugas')) && 'diajukan' !== $aduan->status)
-        {{-- <a href="/tanggapan/create"> Tambah tanggapan</a> --}}
-        
+        <a href="/tanggapan/create"> Tambah tanggapan</a>
     @endif
 </div>
 
