@@ -10,6 +10,7 @@ use App\Http\Controllers\TmpImageController;
 use App\Http\Controllers\userController;
 use App\Models\Aduan;
 use App\Models\TmpImage;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,6 +65,9 @@ Route::group(['middleware' => ['auth', 'role:pelapor|admin|petugas']], function 
 
     // -- lihat detail aduan
     Route::get('/aduan/show/{aduan}', [AduanController::class, 'show']);
+
+    // -- lihat detail pengguna
+    Route::get('/users/show/{user}', [userController::class, 'show']);
 });
 
 // -- fitur pelapor
@@ -108,4 +112,20 @@ Route::group(['middleware' => ['role:admin|petugas', 'auth']], function () {
     // -- simpan perubahan tanggapan
     Route::post('/tanggapan/update/{tanggapan}', [TanggapanController::class, 'update']);
 
+    // -- halaman kelola user pelapor
+    Route::get('/users/pelapor', [userController::class, 'pelapor']);
+
+});
+
+
+// -- fitur khusus admin
+Route::group(['middleware' => ['role:admin', 'auth']], function () {
+    // -- halaman kelola user petugas
+    Route::get('/users/petugas', [userController::class, 'petugas']);
+
+    // -- masuk ke halaman create petugas
+    Route::get('/users/create', [userController::class, 'create']);
+    
+    // -- simpan data petugas baru
+    Route::post('/users/store', [userController::class, 'store']);
 });
