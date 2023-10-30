@@ -68,6 +68,12 @@ Route::group(['middleware' => ['auth', 'role:pelapor|admin|petugas']], function 
 
     // -- lihat detail pengguna
     Route::get('/users/show/{user}', [userController::class, 'show']);
+
+    // -- ubah data pengguna
+    Route::get('/users/edit/{user}', [userController::class, 'edit']);
+
+    // -- simpan perubahan data
+    Route::post('/users/update/{user}', [userController::class, 'update']);
 });
 
 // -- fitur pelapor
