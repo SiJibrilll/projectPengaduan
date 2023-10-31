@@ -5,10 +5,10 @@
         <h1>Jangka waktu aduan</h1>
         <select name="period">
             <option value="" selected disabled>Pilih jangka waktu</option>
-            <option value="daily">Harian</option>
-            <option value="weekly">Mingguan</option>
-            <option value="monthly">Bulanan</option>
-            <option value="annually">Tahunan</option>
+            <option value="harian">Harian</option>
+            <option value="mingguan">Mingguan</option>
+            <option value="bulanan">Bulanan</option>
+            <option value="tahunan">Tahunan</option>
         </select>
 
         <h1>Sortir</h1>

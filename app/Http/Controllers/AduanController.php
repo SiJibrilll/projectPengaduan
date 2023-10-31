@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aduan;
-use App\Models\GambarAduan;
 use App\Models\TmpImage;
+use App\Models\GambarAduan;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Storage;
 
 class AduanController extends Controller
@@ -117,21 +119,26 @@ class AduanController extends Controller
     {
         $period = $request->input('period');
         $sortOrder = $request->input('sortOrder', 'desc'); // Default to 'desc' if not provided
+        $time = '';
 
         switch ($period) {
-            case 'daily':
+            case 'harian':
                 $aduan = Aduan::whereDate('created_at', today());
+                $time = now()->locale('id')->format('l, F j, Y');
                 break;
-            case 'weekly':
+            case 'mingguan':
                 $startOfWeek = now()->startOfWeek();
                 $endOfWeek = now()->endOfWeek();
                 $aduan = Aduan::whereBetween('created_at', [$startOfWeek, $endOfWeek]);
+                $time = $startOfWeek->format('l, F j, Y') . ' - ' . $endOfWeek->format('l, F j, Y');
                 break;
-            case 'monthly':
+            case 'bulanan':
                 $aduan = Aduan::whereMonth('created_at', now()->month);
+                $time = now()->format('F Y');
                 break;
-            case 'annually':
+            case 'tahunan':
                 $aduan = Aduan::whereYear('created_at', now()->year);
+                $time = now()->year;
                 break;
             default:
                 return redirect('/aduan/create-laporan');
@@ -146,8 +153,14 @@ class AduanController extends Controller
             return redirect('/aduan/create-laporan');
         }
 
-        dd($aduan->get());
-        //return response()->json($aduan->get());
+        $pdf = Pdf::loadView('general.laporan', [
+            'aduan' => $aduan->get(),
+            'time' => $time,
+            'periode' => $period
+        ]);
+
+        return $pdf->stream(); // ini untuk melihat file sebagai view biasa, buat testing
+        //return $pdf->download(); // untuk download jadi pdf
     }
 
 }
