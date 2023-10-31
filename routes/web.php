@@ -98,6 +98,15 @@ Route::group(['middleware' => ['role:pelapor', 'auth', 'dataLengkap']], function
 
     // simpan perubahan
     Route::post('/aduan/update/{aduan}', [AduanController::class, 'update']);
+
+    // -- ubah password
+    Route::get('/users/edit-password', [userController::class, 'editPassword']);
+
+    // -- buat password
+    Route::post('/users/create-password', [userController::class, 'createPassword']);
+
+    // -- simpan perubahan password
+    Route::post('/users/update-password', [userController::class, 'updatePassword']);
 });
 
 // -- fitur admin dan petugas

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -118,7 +119,6 @@ class userController extends Controller
     }
 
 
-    // TODO finish edit user
     function update(User $user, Request $request)
     {   
         $validated = $request->validate([
@@ -148,5 +148,53 @@ class userController extends Controller
 
         // jika tidak ada persyaratan yang terpenuhi, maka lempar balik ke halaman detail user
         return redirect('/users/show/'. $user->id);
+    }
+
+
+    // -- show edit password form
+    function editPassword() {
+        return view('pelapor.editPassword');
+    }
+
+    //-- create password
+    function createPassword(Request $request) {
+        $request->validate([
+            'new_password' => 'required|min:8|confirmed'
+        ]);
+
+        // Check if the user doesn't already have a password
+        if (Auth::user()->password == null) {
+            // The user doesn't have a password, so let's create one
+            Auth::user()->fill([
+                'password' => Hash::make($request->new_password)
+            ])->save();
+
+            return redirect('/users/show/' . Auth::user()->id);
+        } else {
+            // The user already has a password
+            return back()->withErrors(['new_password' => 'You already have a password']);
+        }
+    }
+
+
+    // -- update user password
+    function updatePassword(Request $request) {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8|confirmed'
+        ]);
+
+         // Check if the old password is correct
+        if (Hash::check($request->old_password, Auth::user()->password)) {
+            // The old password is correct, change the password
+            Auth::user()->fill([
+                'password' => Hash::make($request->new_password)
+            ])->save();
+
+            return redirect('/users/show/'. Auth::user()->id);
+        } else {
+            // The old password is incorrect
+            return back()->withErrors(['old_password' => 'Your old password is incorrect']);
+        }
     }
 }

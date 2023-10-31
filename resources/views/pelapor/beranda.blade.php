@@ -1,6 +1,6 @@
 <x-pelapor>
 
-<a href="">
+<a href="/users/show/{{auth()->user()->id}}">
     <div>
         <h1> {{auth()->user()->username}}</h1>
         <h3>{{auth()->user()->telepon}}</h3>
