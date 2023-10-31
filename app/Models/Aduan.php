@@ -13,7 +13,8 @@ class Aduan extends Model
         'judul',
         'deskripsi',
         'status',
-        'user_id'
+        'user_id',
+        'tanggal_selesai'
     ];
 
     function user() {

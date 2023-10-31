@@ -130,6 +130,11 @@ Route::group(['middleware' => ['role:admin|petugas', 'auth']], function () {
     // -- halaman kelola user pelapor
     Route::get('/users/pelapor', [userController::class, 'pelapor']);
 
+    // -- halaman create laporan
+    Route::get('/aduan/create-laporan', [AduanController::class, 'createLaporan']);
+
+    // -- generate laporan
+    Route::post('/aduan/generate-laporan', [AduanController::class, 'generateLaporan']);
 });
 
 

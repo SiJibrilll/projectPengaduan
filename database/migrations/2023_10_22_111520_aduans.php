@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('deskripsi');
             $table->enum('status', ['diajukan', 'diterima', 'diproses', 'selesai', 'ditolak']);
             $table->timestamps();
+            $table->dateTime('tanggal_selesai')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }

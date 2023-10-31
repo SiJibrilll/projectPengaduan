@@ -108,4 +108,46 @@ class AduanController extends Controller
 
         return redirect('/beranda');
     }
+
+    function createLaporan() {
+        return view('admin.createLaporan');
+    }
+
+    public function generateLaporan(Request $request)
+    {
+        $period = $request->input('period');
+        $sortOrder = $request->input('sortOrder', 'desc'); // Default to 'desc' if not provided
+
+        switch ($period) {
+            case 'daily':
+                $aduan = Aduan::whereDate('created_at', today());
+                break;
+            case 'weekly':
+                $startOfWeek = now()->startOfWeek();
+                $endOfWeek = now()->endOfWeek();
+                $aduan = Aduan::whereBetween('created_at', [$startOfWeek, $endOfWeek]);
+                break;
+            case 'monthly':
+                $aduan = Aduan::whereMonth('created_at', now()->month);
+                break;
+            case 'annually':
+                $aduan = Aduan::whereYear('created_at', now()->year);
+                break;
+            default:
+                return redirect('/aduan/create-laporan');
+        }
+
+        // Sort the records
+        if ($sortOrder === 'desc') {
+            $aduan = $aduan->orderBy('created_at', 'desc');
+        } elseif ($sortOrder === 'asc') {
+            $aduan = $aduan->orderBy('created_at', 'asc');
+        } else {
+            return redirect('/aduan/create-laporan');
+        }
+
+        dd($aduan->get());
+        //return response()->json($aduan->get());
+    }
+
 }
