@@ -26,7 +26,8 @@ class AduanController extends Controller
         // validasi data
         $request->validate([
             'judul' => 'required',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'image' => 'required',
         ]);
 
         // buat record aduan
@@ -83,7 +84,8 @@ class AduanController extends Controller
         // validasi data
         $request->validate([
             'judul' => 'required',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'image' => 'required',
         ]);
 
         // update aduan
