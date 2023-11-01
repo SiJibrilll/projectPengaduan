@@ -8,7 +8,7 @@
         <textarea name="deskripsi" placeholder="Deskripsikan aduan dengan lebih detail..." class="w-full h-32 border border-gray-300 rounded p-2 resize-none" placeholder="Enter your text..."></textarea>
     </div>
       
-    <h1 class="font-semibold text-[#585858] text-2xl mt-8">Gambar</h1>
+    <h1 class="font-semibold text-[#585858] text-2xl mt-8 mb-4">Gambar</h1>
     <input class="filepond" type="file" name='image[]' multiple credits='false'>
     <div class="flex mt-24">
         <button onclick="goBack()" type="button" class="font-bold rounded-full flex-2 bg-[#E47272] text-white py-2 px-9 sm:px-5 mr-2">Batal</button>
