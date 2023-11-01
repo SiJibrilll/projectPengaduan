@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="bg-white mx-auto p-4 max-w-md h-full">
+    <div class="bg-white mx-auto p-4 max-w-md min-h-screen h-full">
         <div class="mt-20" ></div> {{-- Ini buat ngasih jarak antara nav bar dan content --}}
         <div class="mx-2">
             {{
