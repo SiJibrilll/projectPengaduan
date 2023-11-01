@@ -13,8 +13,11 @@
     <title>Document</title>
 </head>
 <body>
-    {{
-        $slot
-    }}
+    <div class="bg-white mx-auto p-4 max-w-md">
+        {{
+            $slot
+        }}
+    </div>
 </body>
 </html>
+

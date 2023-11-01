@@ -1,4 +1,4 @@
-<x-pelapor>
+<x-general>
   <h1 class="text-3xl font-bold">
       Welcome page
   </h1>
@@ -13,4 +13,4 @@
   @else
   <a href="/login" class="underline">Login</a>
   @endauth
-</x-pelapor>
+</x-general>
