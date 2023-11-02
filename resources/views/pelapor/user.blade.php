@@ -34,7 +34,9 @@
 
             <a class="font-semibold text-lg text-[#0FB5A1]" href="/users/edit/{{$user->id}}">Ubah data profil</a>
             <div class="w-auto border-b-2 border-[#AAAAAA] my-2"></div>
-            <a class="font-semibold text-lg text-[#0FB5A1]" href="/users/edit-password">Ubah password</a>
+            <a class="font-semibold text-lg text-[#0FB5A1]" href="/users/edit-password">
+                 {{$user->password? 'Ubah' : 'Buat'}} password
+            </a>
         </div>
 
         <div class="flex justify-center mt-auto">
