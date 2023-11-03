@@ -10,6 +10,7 @@
         href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
         rel="stylesheet"
     />
+
     <title>Document</title>
 </head>
 <body class="bg-gray-100">

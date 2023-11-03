@@ -20,6 +20,8 @@ class TanggapanController extends Controller
             'aduan_id' => 'required'
         ]);
 
+        $validatedData['status'] = ['diajukan', 'diterima', 'diproses', 'selesai', 'ditolak'][$validatedData['status']];
+
         $validatedData['user_id'] = Auth()->user()->id;
         Tanggapan::create($validatedData);
 
@@ -37,6 +39,7 @@ class TanggapanController extends Controller
             'aduan_id' => 'required'
         ]);
 
+        $validatedData['status'] = ['diajukan', 'diterima', 'diproses', 'selesai', 'ditolak'][$validatedData['status']];
 
         $validatedData['user_id'] = Auth()->user()->id;
         $tanggapan->update($validatedData);
