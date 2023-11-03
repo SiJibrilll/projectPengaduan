@@ -11,8 +11,8 @@
     <h1 class="font-semibold text-[#585858] text-2xl mt-8 mb-4">Gambar</h1>
     <input class="filepond" type="file" name='image[]' multiple credits='false'>
     <div class="flex mt-24">
-        <button onclick="goBack()" type="button" class="font-bold rounded-full flex-2 bg-[#E47272] text-white py-2 px-9 sm:px-5 mr-2">Batal</button>
-        <button type="submit" class="font-bold rounded-full flex-1 bg-[#31CAB8] text-white py-2 px-4 sm:px-6 ml-2">Upload Aduan</button>
+        <button onclick="goBack()" type="button" class="font-bold rounded-full flex-2 bg-[#E47272] transition-all hover:bg-[#d16868] text-white py-2 px-9 sm:px-5 mr-2">Batal</button>
+        <button type="submit" class="font-bold rounded-full flex-1 bg-[#31CAB8] hover:bg-[#2fbfae] transition-all text-white py-2 px-4 sm:px-6 ml-2">Upload Aduan</button>
     </div>
       
       
