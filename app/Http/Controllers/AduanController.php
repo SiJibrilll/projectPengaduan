@@ -110,7 +110,7 @@ class AduanController extends Controller
             $tmp->delete();
         }
 
-        return redirect('/beranda');
+        return redirect('/aduan/show/'. $aduan->id);
     }
 
     function createLaporan() {

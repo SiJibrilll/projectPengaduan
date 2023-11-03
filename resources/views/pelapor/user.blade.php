@@ -39,8 +39,8 @@
             </a>
         </div>
 
-        <div class="flex justify-center mt-auto">
-            <a class="underline" href="/beranda">Kembali</a>
+        <div class="flex justify-center">
+            <a class="underline text-[#0FB5A1]" href="/beranda">Kembali</a>
         </div>
     </div>
 </x-pelapor>

@@ -20,7 +20,7 @@
     </form>
     <script>
         function goBack() {
-            window.location.href = '/beranda';
+            window.location.href = '/aduan/show/' + @json($aduan->id);
         }
     </script>
     
