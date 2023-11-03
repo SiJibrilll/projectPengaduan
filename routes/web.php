@@ -66,6 +66,9 @@ Route::group(['middleware' => ['auth', 'role:pelapor|admin|petugas']], function 
     // -- lihat detail aduan
     Route::get('/aduan/show/{aduan}', [AduanController::class, 'show']);
 
+    // -- hapus aduan
+    Route::delete('/aduan/delete/{aduan}', [AduanController::class, 'delete']);
+
     // -- lihat detail pengguna
     Route::get('/users/show/{user}', [userController::class, 'show']);
 

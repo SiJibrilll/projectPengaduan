@@ -117,6 +117,22 @@ class AduanController extends Controller
         return view('admin.createLaporan');
     }
 
+    function delete(Aduan $aduan) {
+        
+        $user = Auth()->user();
+
+        if ($user->hasRole('admin') || $user->hasRole('petugas')) {
+            $aduan->delete();
+            return redirect('/aduan');
+        }
+
+        if ($aduan->user_id === $user->id) {
+            $aduan->delete();
+        }
+
+        return redirect('/beranda');
+    }
+
     public function generateLaporan(Request $request)
     {
         $period = $request->input('period');

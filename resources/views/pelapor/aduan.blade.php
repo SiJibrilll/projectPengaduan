@@ -27,7 +27,6 @@
   
   <p class="my-2 text-lg text-[#585858]"> {{$aduan->deskripsi}} </p>
   
-  <p class="text-[#585858] font-light text-sm"> {{date("jS F, Y", strtotime($aduan->created_at))}}</p>
   
   
    <div class="flex flex-row mt-2">
@@ -39,12 +38,18 @@
          </p>
    </div>
 
-  
+   <p class="text-[#585858] font-light text-sm mt-2"> {{date("jS F, Y", strtotime($aduan->created_at))}}</p>
+
+   
   @if ('diajukan' == $aduan->status)
   <div class="mt-14">
-      <a class="mt-10 font-semibold text-[#0FB5A1]" class="underline" href="/aduan/edit/{{$aduan->id}}">Ubah Aduan</a>
+      <a class="mt-10 font-semibold text-[#0FB5A1]" class="underline" href="/aduan/edit/{{$aduan->id}}">Ubah aduan</a>
       <div class="w-auto border-b-2 border-[#AAAAAA] my-2"></div>
-      <a class="font-semibold text-[#0FB5A1]" class="underline" href="/aduan/edit/{{$aduan->id}}">Ubah Aduan</a>
+      <form action="/aduan/delete/{{$aduan->id}}" method="POST">
+         @csrf
+         @method('DELETE')
+         <button type="submit" class="font-semibold text-red-600">Hapus aduan</button>
+      </form>
   </div>
   @endif
 
@@ -52,28 +57,31 @@
   
   @if($aduan->tanggapan->count() > 0)
       @foreach ($aduan->tanggapan as $tanggapan)
-         <div class="border-2 border-gray-500 rounded-xl p-2 text-sm" >
+         <div class="border-2 border-gray-500 rounded-xl p-2 text-sm mb-2" >
             <div class="flex">
                <p class="mr-1">Oleh:</p>
                <p class="font-bold"> {{$tanggapan->user->username}} </p>
             </div>
 
             <p class="mt-4"> {{$tanggapan->tanggapan}} </p>
-            <p class="font-light text-xs mt-1"> {{date("jS F, Y", strtotime($tanggapan->created_at))}}</p>
-            <p> {{$tanggapan}} </p>
-            <p class="font-medium {{ in_array($tanggapan->status, ['diajukan','diproses']) ? 'text-yellow-500' :
-               ($tanggapan->status == 'selesai' ? 'text-green-500' :
-               ($tanggapan->status == 'ditolak' ? 'text-red-500' : ($tanggapan->status == 'diterima'? 'text-blue-500': ''))) }}">
-               {{ucfirst($tanggapan->status)}}
-            </p>
-
+            <div class="flex mt-2">
+               <p class="mr-1">Status:</p>
+               <p class="font-medium {{ in_array($tanggapan->status, ['diajukan','diproses']) ? 'text-yellow-500' :
+                  ($tanggapan->status == 'selesai' ? 'text-green-500' :
+                  ($tanggapan->status == 'ditolak' ? 'text-red-500' : ($tanggapan->status == 'diterima'? 'text-blue-500': ''))) }}">
+                  {{ucfirst($tanggapan->status)}}
+               </p>
+            </div>
+            <p class="font-light text-xs mt-2"> {{date("jS F, Y", strtotime($tanggapan->created_at))}}</p>
          </div>
       @endforeach
   @else
   <p> Belum ada tanggapan </p>
   @endif
 
-
+   <div class="text-center mt-2">
+      <a class="underline text-[#0FB5A1]" href="/beranda">Kembali</a>
+   </div>
   <script>
       const slider = document.querySelector('.scrollbar-hide');
       let isDown = false;
