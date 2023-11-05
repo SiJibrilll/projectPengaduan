@@ -6,11 +6,7 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {
-      fontSize: {
-        'xxs': '0.5rem',
-      }
-    },
+    extend: {},
   },
   plugins: [],
 }
