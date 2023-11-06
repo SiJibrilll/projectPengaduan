@@ -14,7 +14,7 @@
 
         @if (auth()->user()->hasRole('admin') && 'petugas' == $role)          
             <a href="/users/create" class="relative ml-6 group">
-                <div class="group-hover:transition-[width]  group-hover:-translate-x-5 group-hover:w-52 w-10 h-10 rounded-full bg-[#0B8A7B] text-white absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden">
+                <div class="group-hover:transition-[width]  sm:group-hover:-translate-x-5 sm:group-hover:w-52 w-10 h-10 rounded-full bg-[#0B8A7B] text-white absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden">
                     <span class="whitespace-nowrap font-medium absolute top-2 group-hover:translate-x-14">
                         Tambah Petugas
                       </span>            
