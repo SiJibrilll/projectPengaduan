@@ -78,7 +78,6 @@ class userController extends Controller
         $validated = $request->validate([
             'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'nik' => 'required|unique:users',
             'telepon' => 'required|unique:users',
             'password' => 'required|min:8',
         ]);

@@ -13,27 +13,22 @@
           
 
         @if (auth()->user()->hasRole('admin') && 'petugas' == $role)          
-            {{-- <a href="/users/create"> Tambah Petugas </a> --}}
+            <a href="/users/create" class="relative ml-6 group">
+                <div class="group-hover:transition-[width]  group-hover:-translate-x-5 group-hover:w-52 w-10 h-10 rounded-full bg-[#0B8A7B] text-white absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden">
+                    <span class="whitespace-nowrap font-medium absolute top-2 group-hover:translate-x-14">
+                        Tambah Petugas
+                      </span>            
+                </div>
+                <div class="w-10 h-10 text-4xl rounded-full bg-[#0FB5A1] text-white absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
+                    <span class="font-bold absolute top-4  left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</span>
+                </div>
+            </a>
         @endif
 
-        <a href="/users/create" class="relative ml-6 group">
-            <div class="group-hover:transition-[width]  group-hover:-translate-x-5 group-hover:w-52 w-10 h-10 rounded-full bg-[#0B8A7B] text-white absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden">
-                <span class="whitespace-nowrap font-medium absolute top-2 group-hover:translate-x-14">
-                    Tambah Petugas
-                  </span>            
-            </div>
-            <div class="w-10 h-10 text-4xl rounded-full bg-[#0FB5A1] text-white absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
-                <span class="font-bold absolute top-4  left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</span>
-            </div>
-          </a>
           
             
     </div>
             
-    {{-- @foreach ($users as $user)
-        <p wire:key='{{$user->id}}'> {{$user->username}} </p>
-    @endforeach --}}
-
    
        
         <div class="overflow-auto">
@@ -54,7 +49,8 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($users as $user)
-                        <tr wire:key='{{$user->id}}' class="hover:bg-gray-100 transition duration-150 ease-in-out">
+                        <tr onclick="document.location = '/users/show/{{$user->id}}';" wire:key='{{$user->id}}' class="hover:bg-gray-100 transition duration-150 ease-in-out">
+                            
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->id }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->username }}</td>
                             @if ('pelapor' == $role)
@@ -67,7 +63,5 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-  
-
+        </div>        
 </div>

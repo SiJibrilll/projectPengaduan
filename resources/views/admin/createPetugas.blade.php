@@ -8,5 +8,16 @@
         <input name="telepon" placeholder="Telepon" />
         <input name="password" placeholder="Passowrd" />
         <button type="submit" class="btn btn-primary">Simpan</button>
+
+        @if($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
+
     </form>
+
+
 </x-admin>
