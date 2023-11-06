@@ -10,6 +10,7 @@ class KelolaAduan extends Component
 {   
 
     public $aduan = [];
+    public $selected = 'diajukan';
     
     // -- to set inital state
     function mount() {
@@ -31,6 +32,7 @@ class KelolaAduan extends Component
             return;
         }
         
+        $this->selected = $status;
         $this->aduan = Aduan::where('status', $status)->get();;
     }
 
