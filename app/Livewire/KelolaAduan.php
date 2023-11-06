@@ -33,7 +33,7 @@ class KelolaAduan extends Component
         }
         
         $this->selected = $status;
-        $this->aduan = Aduan::where('status', $status)->get();;
+        $this->aduan = Aduan::where('status', $status)->get();
     }
 
     public function render()
