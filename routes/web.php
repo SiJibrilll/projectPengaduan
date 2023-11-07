@@ -138,6 +138,12 @@ Route::group(['middleware' => ['role:admin|petugas', 'auth']], function () {
 
     // -- generate laporan
     Route::post('/aduan/generate-laporan', [AduanController::class, 'generateLaporan']);
+
+    // -- blokir akun
+    Route::post('/users/blokir/{user}', [userController::class, 'blokir']);
+
+    // -- hapus akun
+    Route::delete('/users/delete/{user}', [userController::class, 'delete']);
 });
 
 

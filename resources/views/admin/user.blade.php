@@ -28,8 +28,15 @@
 
     <a class="font-semibold text-lg text-[#0FB5A1]" href="/users/edit/{{$user->id}}">Ubah data {{$user->hasRole('pelapor')? 'Masyarakat' : 'Petugas'}} </a>
     <div class="w-52 border-b-2 border-[#AAAAAA] my-2"></div>
-    <a class="font-semibold text-lg text-[#E15C5C]" href="/users/edit-password">Blokir akun</a>
+    <form action="/users/blokir/{{$user->id}}" method="POST">
+        @csrf
+        <button type="submit" class="font-semibold text-lg text-[#E15C5C]" >Blokir akun</button>
+     </form>
     <div class="w-52 border-b-2 border-[#AAAAAA] my-2"></div>
-    <a class="font-semibold text-lg text-[#E15C5C]" href="/users/edit-password">Hapus akun</a>
+    <form action="/users/delete/{{$user->id}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="font-semibold text-lg text-[#E15C5C]" >Hapus akun</button>
+     </form>
 
 </x-admin>

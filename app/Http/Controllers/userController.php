@@ -20,7 +20,6 @@ class userController extends Controller
             return view('admin.kelolaAduan');
         }
 
-
         $aduans = $user->aduan()->get();
         return view('pelapor.beranda', ['aduans' => $aduans]);
     }
@@ -60,7 +59,7 @@ class userController extends Controller
                 'user' => $user
             ]);
         }
-
+        
         // -- jika tidak ada syarat yang terpenuhi, kembali ke beranda
         return redirect('/beranda');
     }
@@ -195,5 +194,26 @@ class userController extends Controller
             // The old password is incorrect
             return back()->withErrors(['old_password' => 'Your old password is incorrect']);
         }
+    }
+
+    function blokir(User $user) {
+        if ($user->hasRole('petugas')) {
+            return redirect('/users/show/' . $user->id);
+        }
+
+        
+        $user->removeRole('pelapor');
+        return redirect('/users/pelapor');
+    }
+
+    function delete(User $user) {
+        if (!$user->hasRole('pelapor') && auth()->user()->hasRole('admin')) {
+            $user->delete();
+            return redirect('/users/petugas');
+        }
+
+        
+        $user->delete();
+        return redirect('/users/pelapor');
     }
 }

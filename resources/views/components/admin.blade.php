@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </li>
-            {{-- <li>
+            <li>
                 <a href="/beranda" class="flex flex-col p-3 items-center sm:max-h-14 sm:flex-row sm:mb-4 hover:bg-[#0FA896]">
                     <svg class="text-white w-full sm:min-w-fit sm:max-w-fit sm:mr-2 sm:p-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -29,7 +29,7 @@
                     <span class="text-xs text-white hidden sm:hidden sm:group-hover:block transition-all sm:text-xl sm:font-bold sm:mr-1  sm:whitespace-nowrap">Beranda</span>
                 
                 </a>
-            </li> --}}
+            </li>
             <li>
                 <a href="/aduan" class="flex flex-col p-3 items-center sm:max-h-14 sm:flex-row sm:mb-4 hover:bg-[#0FA896]">
                     <svg class="text-white w-full sm:min-w-fit sm:max-w-fit sm:mr-2 sm:p-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

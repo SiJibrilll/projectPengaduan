@@ -29,7 +29,7 @@
 
         <div class="flex mt-24 max-w-sm">
             <button onclick="goBack()" type="button"
-                class="font-bold rounded-full flex-2 bg-[#E47272] transition-all hover:bg-[#d16868] text-white py-2 px-9 sm:px-5 mr-2">Batal</button>
+                class="font-bold rounded-full flex-2 bg-[#E47272] transition-all hover:bg-[#d16868] text-white py-2 px-9 sm:px-5 mr-2">Kembali</button>
             <button type="submit"
                 class="font-bold rounded-full flex-1 bg-[#31CAB8] hover:bg-[#2fbfae] transition-all text-white py-2 px-4 sm:px-6 ml-2">Download</button>
         </div>

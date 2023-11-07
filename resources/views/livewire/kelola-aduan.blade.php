@@ -12,8 +12,11 @@
             <button class="font-semibold text-base sm:text-lg {{ $selected === 'ditolak' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("ditolak")'>Ditolak</button>
         </div>
 
-        <a href="/aduan/create-laporan" class="px-4 py-2 rounded-md bg-[#0FB5A1] text-white hover:bg-[#0D9C8B] font-semibold" type="submit" class="">buat laporan</a>
+        <a href="/aduan/create-laporan" class="hidden px-4 py-2 rounded-md bg-[#0FB5A1] text-white sm:block hover:bg-[#0D9C8B] font-semibold" type="submit" class="">buat laporan</a>
     </div>
+
+    <a href="/aduan/create-laporan" class="mb-10 block text-center sm:hidden px-4 py-2 rounded-md bg-[#0FB5A1] text-white hover:bg-[#0D9C8B] font-semibold" type="submit" class="">buat laporan</a>
+
 
     @if (count($aduan) > 0)
         <div class="grid mb-20 sm:mb-0 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

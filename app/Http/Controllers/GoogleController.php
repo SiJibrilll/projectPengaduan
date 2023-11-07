@@ -26,8 +26,10 @@ class GoogleController extends Controller
                     'email' => $googleUser->email,
                     'google_id' => $googleUser->id,
                 ]);
-        
-                $user->assignRole('pelapor'); // give user a pelapor role
+                
+                if ($user->wasRecentlyCreated) {
+                    $user->assignRole('pelapor'); // give user a pelapor role
+                  }
         
                 Auth::login($user, true); // login the user
             });
