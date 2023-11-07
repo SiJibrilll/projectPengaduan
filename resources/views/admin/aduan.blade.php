@@ -35,12 +35,10 @@
             
             
             <div class="flex flex-row mt-2">
-                <p class="mr-1">Status:</p>
-                <p class="font-medium {{ in_array($aduan->status, ['diajukan','diproses']) ? 'text-yellow-500' :
-                    ($aduan->status == 'selesai' ? 'text-green-500' :
-                    ($aduan->status == 'ditolak' ? 'text-red-500' : ($aduan->status == 'diterima'? 'text-blue-500': ''))) }}">
-                    {{ucfirst($aduan->status)}}
-                </p>
+                <p class="mr-1">Oleh:</p>
+                <a href="/users/show/{{$aduan->user->id}}" class="font-medium text-[#0FB5A1]">
+                    {{$aduan->user->username}}
+                </a>
             </div>
         
             <p class="text-[#585858] font-light text-sm mt-2"> {{date("jS F, Y", strtotime($aduan->created_at))}}</p>
