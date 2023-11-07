@@ -1,29 +1,6 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Laporan</title>
-</head>
-<body>
-    <div class="container mx-auto flex justify-between items-center bg-green-500" style="display: flex; justify-content: space-between; align-items: center; background-color: #34d399;">
-        <h1 style="font-weight: 800; font-size: 3rem; color: white;">LaporIND</h1>
-      </div>
-      
-   
-    <h1>Laporan Aduan {{$periode}}</h1>
-    <p>Per: {{$time}}</p>
-
-    @foreach ($aduan as $item)
-        <p> {{var_dump($item)}} </p>
-    @endforeach
-</body>
-</html> --}}
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Letter</title>
@@ -79,7 +56,7 @@ body {
                         <td style="padding: 10px;"> {{$item->deskripsi}}</td>
                         <td style="padding: 10px;"> {{$item->status}}</td>
                         <td style="padding: 10px;"> {{$item->created_at->format('l, F j, Y')}}</td>
-                        <td style="padding: 10px;">-</td>
+                        <td style="padding: 10px;"> {{null == $item->tanggal_selesai ? '-' : Carbon\Carbon::parse($item->tanggal_selesai)->format('l, F j, Y')}} </td>
                     </tr>
                 @endforeach
                

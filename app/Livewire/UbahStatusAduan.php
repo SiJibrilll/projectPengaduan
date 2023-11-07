@@ -2,9 +2,10 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Locked;
+use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\Attributes\Locked;
+use Illuminate\Support\Facades\Auth;
 
 class UbahStatusAduan extends Component
 {
@@ -36,7 +37,8 @@ class UbahStatusAduan extends Component
         
         // update status
         $this->aduan->update([
-            'status' => $this->statusList[$this->status]
+            'status' => $this->statusList[$this->status],
+            'tanggal_selesai' => Carbon::now()
         ]);
         
     }
