@@ -13,7 +13,7 @@
                     <h3 class="mt-10 text-xl font-semibold text-[#585858]">NIK</h3>
                     <input class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="text" name="nik"
                         placeholder="Masukan nik anda">
-                    <h3 class=" mt-10 text-xl font-semibold text-[#585858]">Password</h3>
+                    <h3 class=" mt-10 text-xl font-semibold text-[#585858]">Telepon</h3>
                     <input class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="text"
                         placeholder="Masukan nomor telepon anda" name="telepon">
                     <br>

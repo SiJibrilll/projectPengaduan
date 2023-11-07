@@ -9,7 +9,7 @@
     @livewireStyles
 </head>
 <body>
-    <nav class="bg-[#0FB5A1] fixed group flex duration-75 transition-all w-screen bottom-0 flex-row-reverse sm:justify-between sm:flex-col sm:w-24 sm:h-screen sm:hover:w-72">
+    <nav class="z-10 bg-[#0FB5A1] fixed group flex duration-75 transition-all w-screen bottom-0 flex-row-reverse sm:justify-between sm:flex-col sm:w-24 sm:h-screen sm:hover:w-72">
         <ul class="flex items-center mr-3 sm:mr-0 sm:items-start flex-row-reverse sm:flex-col overflow-hidden">
             <li>
                 <div class="hidden sm:ml-5 sm:mt-10 sm:mb-10 sm:items-center sm:justify-start sm:flex overflow-hidden">
