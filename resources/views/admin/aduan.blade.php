@@ -60,27 +60,47 @@
     </div>
     
   
-    <h1 class="mt-14 font-bold text-[#585858] text-2xl mb-4"> Tanggapan </h1>
+    <div class="flex items-center mb-8">
+        
+        <h1 class="mt-14 font-bold text-[#585858] text-2xl mb-4 mr-4"> Tanggapan </h1>
+        
+
+        <a href="/tanggapan/create/{{$aduan->id}}" class="relative ml-6 group">
+            <div class="group-hover:transition-[width]  sm:group-hover:-translate-x-5 sm:group-hover:w-56 w-10 h-10 rounded-full bg-[#0B8A7B] text-white absolute top-0 left-0 transform -translate-x-1/2 overflow-hidden">
+                <span class="whitespace-nowrap font-medium absolute top-2 group-hover:translate-x-14">
+                    Tambah Tanggapan
+                    </span>            
+            </div>
+            <div class="w-10 h-10 text-4xl rounded-full bg-[#0FB5A1] text-white absolute top-0 left-0 transform -translate-x-1/2">
+                <span class="font-bold absolute top-4  left-1/2 transform -translate-x-1/2 -translate-y-1/2">+</span>
+            </div>
+        </a>
+
+          
+            
+    </div>
     
     @if($aduan->tanggapan->count() > 0)
         @foreach ($aduan->tanggapan as $tanggapan)
-           <div class="border-2 border-gray-500 rounded-xl p-2 text-sm mb-2" >
-              <div class="flex">
-                 <p class="mr-1">Oleh:</p>
-                 <p class="font-bold"> {{$tanggapan->user->username}} </p>
-              </div>
-  
-              <p class="mt-4"> {{$tanggapan->tanggapan}} </p>
-              <div class="flex mt-2">
-                 <p class="mr-1">Status:</p>
-                 <p class="font-medium {{ in_array($tanggapan->status, ['diajukan','diproses']) ? 'text-yellow-500' :
-                    ($tanggapan->status == 'selesai' ? 'text-green-500' :
-                    ($tanggapan->status == 'ditolak' ? 'text-red-500' : ($tanggapan->status == 'diterima'? 'text-blue-500': ''))) }}">
-                    {{ucfirst($tanggapan->status)}}
-                 </p>
-              </div>
-              <p class="font-light text-xs mt-2"> {{date("jS F, Y", strtotime($tanggapan->created_at))}}</p>
-           </div>
+            <a href="/tanggapan/edit/{{$tanggapan->id}}">
+                <div class="border-2 hover:bg-slate-100 border-gray-500 rounded-xl p-2 text-sm mb-2" >
+                    <div class="flex">
+                        <p class="mr-1">Oleh:</p>
+                        <p class="font-bold"> {{$tanggapan->user->username}} </p>
+                    </div>
+        
+                    <p class="mt-4"> {{$tanggapan->tanggapan}} </p>
+                    <div class="flex mt-2">
+                        <p class="mr-1">Status:</p>
+                        <p class="font-medium {{ in_array($tanggapan->status, ['diajukan','diproses']) ? 'text-yellow-500' :
+                            ($tanggapan->status == 'selesai' ? 'text-green-500' :
+                            ($tanggapan->status == 'ditolak' ? 'text-red-500' : ($tanggapan->status == 'diterima'? 'text-blue-500': ''))) }}">
+                            {{ucfirst($tanggapan->status)}}
+                        </p>
+                    </div>
+                    <p class="font-light text-xs mt-2"> {{date("jS F, Y", strtotime($tanggapan->created_at))}}</p>
+                </div>
+            </a>
         @endforeach
     @else
     <p> Belum ada tanggapan </p>
