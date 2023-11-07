@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -50,8 +49,8 @@ body {
             </thead>
             <tbody style="background-color: #fff; color: #000;">
                 
-                @foreach ($aduan as $item)
-                    <tr>
+                @foreach ($aduan as $index => $item)
+                    <tr style="{{0 == $index % 2 ? '' : 'background-color: #DEEDEB;'}}">
                         <td style="padding: 10px;"> {{$item->judul}}</td>
                         <td style="padding: 10px;"> {{$item->deskripsi}}</td>
                         <td style="padding: 10px;"> {{$item->status}}</td>

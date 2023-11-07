@@ -172,27 +172,15 @@ class AduanController extends Controller
             return redirect('/aduan/create-laporan');
         }
 
-        // return view('general.laporan', [
-        //     'aduan' => $aduan->get(),
-        //     'time' => $time,
-        //     'periode' => $period
-        // // ]);
-        // $pngString =  Browsershot::html('<h1>Hello world!!</h1>')
-        // ->setNpmBinary('PATH %~dp0;%PATH%;')
-        // ->setNodeBinary('PATH %~dp0;%PATH%;')
-        // ->base64screenshot();
-
-        // return $pngString;
-
-        // return Browsershot::html('<h1>Hello world!!</h1>')->noSandbox()->save('example.pdf');;
+        
         $pdf = Pdf::loadView('general.laporan', [
             'aduan' => $aduan->get(),
             'time' => $time,
             'periode' => $period
         ]);
 
-        return $pdf->stream(); // ini untuk melihat file sebagai view biasa, buat testing
-        //return $pdf->download(); // untuk download jadi pdf
+        // return $pdf->stream(); // ini untuk melihat file sebagai view biasa, buat testing
+        return $pdf->download(); // untuk download jadi pdf
     }
 
 }
