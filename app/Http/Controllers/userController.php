@@ -17,7 +17,7 @@ class userController extends Controller
         $user = Auth()->user();
 
         if ($user->hasRole('admin') || $user->hasRole('petugas')) {
-            return view('admin.beranda');
+            return view('admin.kelolaAduan');
         }
 
 
