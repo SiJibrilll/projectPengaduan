@@ -78,7 +78,7 @@ class userController extends Controller
             'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'telepon' => 'required|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         try { // lets try creating a user
