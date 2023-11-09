@@ -192,7 +192,7 @@ class userController extends Controller
             return redirect('/users/show/'. Auth::user()->id);
         } else {
             // The old password is incorrect
-            return back()->withErrors(['old_password' => 'Your old password is incorrect']);
+            return back()->withErrors(['old_password' => 'Password lama salah']);
         }
     }
 
