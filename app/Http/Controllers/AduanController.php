@@ -42,6 +42,7 @@ class AduanController extends Controller
         // simpan tiap gambar yang disertakan
         foreach (($request->image ?? array()) as $image) {
             if (null == $image) {
+                $aduan->delete();
                 return redirect('/aduan/create')->withInput()->withErrors(['image' => 'Gambar belum terupload']);
             }
             
