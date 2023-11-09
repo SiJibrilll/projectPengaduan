@@ -33,12 +33,5 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $petugas->assignRole('petugas');
-
-        $pelapor = \App\Models\User::factory()->create([
-            'username' => 'petugas',
-            'email' => 'petugas@LaporIND.com',
-            'password' => 12345678,
-            'telepon' => '0812 8822 3567 9167'
-        ]);
     }
 }

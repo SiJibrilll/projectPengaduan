@@ -14,7 +14,7 @@
             <li>
                 <div class="hidden sm:ml-5 sm:mt-10 sm:mb-10 sm:items-center sm:justify-start sm:flex overflow-hidden">
                     <span class="text-white sm:block sm:group-hover:hidden transition-all text-5xl font-extrabold mr-1">LI</span>
-                <div>
+                    <div>
                         <span class="text-white block sm:invisible sm:group-hover:visible text-4xl font-bold mr-1">LaporIND</span>
                         <span class="text-white block sm:invisible sm:group-hover:visible text-xl">Panel Managemen</span>
                     </div>

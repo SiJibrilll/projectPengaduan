@@ -36,9 +36,7 @@
     @foreach ($aduans as $aduan)
     <a href="/aduan/show/{{$aduan->id}}">
         <div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
-            @isset($aduan->gambar[0])
-                <img class="max-h-72 w-full object-cover" src="{{asset("storage/images/gambarAduan/" . $aduan->gambar[0]->gambar)}}" alt="Image" class="w-full h-48 object-cover">
-            @endisset
+            <img class="max-h-72 w-full object-cover" src="{{asset("storage/images/gambarAduan/" . $aduan->gambar[0]->gambar)}}" alt="Image" class="w-full h-48 object-cover">
             <div class="p-4">
               <h2 class="text-xl font-bold text-gray-500 mb-2 mt-5">{{$aduan->judul}}</h2>
               <p class="text-sm font-medium text-[#717171] mb-2">{{$aduan->deskripsi}}</p>
