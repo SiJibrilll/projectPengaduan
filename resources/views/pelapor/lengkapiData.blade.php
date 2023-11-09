@@ -11,11 +11,19 @@
                 <form action="/lengkapi-data/store" method="POST">
                     @csrf
                     <h3 class="mt-10 text-xl font-semibold text-[#585858]">NIK</h3>
-                    <input class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="text" name="nik"
+                    <input value="{{old('nik')}}" class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="text" name="nik"
                         placeholder="Masukan nik anda">
+                        @error('nik')
+                            <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+                        @enderror
+                
                     <h3 class=" mt-10 text-xl font-semibold text-[#585858]">Telepon</h3>
-                    <input class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="text"
+                    <input value="{{old('telepon')}}" class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="text"
                         placeholder="Masukan nomor telepon anda" name="telepon">
+                        @error('telepon')
+                            <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+                        @enderror
+                
                     <br>
                     <div class="flex justify-center mt-10">
                         <button type="submit"
