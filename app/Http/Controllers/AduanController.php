@@ -41,6 +41,10 @@ class AduanController extends Controller
 
         // simpan tiap gambar yang disertakan
         foreach (($request->image ?? array()) as $image) {
+            if (null == $image) {
+                return redirect('/aduan/create')->withInput()->withErrors(['image' => 'Gambar belum terupload']);
+            }
+            
             $tmp = TmpImage::find($image);
             Storage::copy('images/tmp/'. $tmp->folder .'/' . $tmp->gambar, 'images/gambarAduan/' . $tmp->folder .'/' . $tmp->gambar);
             GambarAduan::create([
