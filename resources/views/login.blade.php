@@ -13,12 +13,20 @@
                 <form action="/authenticate" method="POST">
                     @csrf
                     <h3 class="mt-10 text-xl font-semibold text-[#585858]">Email</h3>
-                    <input class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="email" name="email"
+                    <input value="{{old('email')}}" class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="email" name="email"
                         placeholder="Masukan email anda">
+                        @error('email')
+                            <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+                        @enderror
+                
                     <h3 class=" mt-10 text-xl font-semibold text-[#585858]">Password</h3>
                     <input class="w-full border-b-2 border-[#ABABAB] focus:border-gray-600" type="password"
                         name="password">
                     <br>
+                    @error('password')
+                        <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+                    @enderror
+                    
                     <div class="flex justify-center mt-10">
                         <button type="submit"
                             class="text-xl bg-[#0FB5A1] w-64 h-11 hover:bg-[#0E9A89] text-white font-bold py-2 px-4 rounded-full">
