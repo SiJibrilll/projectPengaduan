@@ -23,7 +23,9 @@
             @foreach ($aduan as $index => $card)
             <a href="/aduan/show/{{$card->id}}">
                 <div class="bg-white hover:bg-slate-100 rounded-lg shadow-md overflow-hidden">
-                    <img class="w-full h-52 object-cover" src="{{asset("storage/images/gambarAduan/" . $card->gambar[0]->gambar)}}" alt="Image">
+                    @isset($card->gambar[0])
+                        <img class="max-h-72 w-full object-cover" src="{{asset("storage/images/gambarAduan/" . $card->gambar[0]->gambar)}}" alt="Image" class="w-full h-48 object-cover">
+                    @endisset
                     <div class="p-4">
                         <h2 class="text-xl font-bold text-gray-500 mb-2 truncate">{{$card->judul}}</h2>
                         <p class="text-sm font-medium text-[#717171] mb-2 truncate">{{$card->deskripsi}}</p>
