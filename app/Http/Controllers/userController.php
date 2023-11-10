@@ -124,7 +124,7 @@ class userController extends Controller
             'email' => $user->hasRole('petugas')? ['required', 'email', Rule::unique('users')->ignore($user->id)]: 'prohibited', // hanya user petugas yang emailnya bisa diganti
             'nik' => $user->hasRole('pelapor')? ['required', Rule::unique('users')->ignore($user->id)] : 'prohibited', // hanya user pelapor yang nik nya bisa diganti
             'telepon' => ['required', Rule::unique('users')->ignore($user->id)],
-            'password' => $user->hasRole('pelapor')? 'prohibited' : 'nullable|min:8', // pelapor akan memiliki fitur reset password sendiri
+            'password' => auth()->user()->hasRole('pelapor')? 'prohibited' : 'nullable|min:8|confirmed', // pelapor akan memiliki fitur reset password sendiri
         ]);
         
         $currentUser = Auth()->user();
