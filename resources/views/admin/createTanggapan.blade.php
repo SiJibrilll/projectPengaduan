@@ -10,9 +10,9 @@
                     <textarea name="tanggapan" placeholder="Beri tanggapan..."
                         class="w-full h-32 border border-gray-300 rounded p-2 resize-none"> {{old('tanggapan')}} </textarea>
                 </div>
-                @error('tanggapan')
-                    <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
-                @enderror
+            @error('tanggapan')
+                <small class="text-red-500 text-xs mt-1">{{ $message }}</small>
+            @enderror
         
             </div>
 
