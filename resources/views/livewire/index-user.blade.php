@@ -48,10 +48,10 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        @foreach ($users as $user)
+                        @foreach ($users as $index => $user)
                             <tr onclick="document.location = '/users/show/{{$user->id}}';" wire:key='{{$user->id}}' class="hover:bg-gray-100 transition duration-150 ease-in-out">
                                 
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->id }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $index + 1 }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->username }}</td>
                                 @if ('pelapor' == $role)
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->nik }}</td>
