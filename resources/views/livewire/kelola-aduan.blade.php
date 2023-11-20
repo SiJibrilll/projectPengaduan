@@ -4,12 +4,12 @@
     <h1  class="mt-5 font-bold text-[#585858] text-3xl mb-10">Kelola Aduan</h1>
 
     <div class="flex mb-10 justify-between items-center">
-        <div class=" flex justify-between max-w-sm grow">
-            <button class="font-semibold text-base sm:text-lg {{ $selected === 'diajukan' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("diajukan")'>Diajukan</button>
-            <button class="font-semibold text-base sm:text-lg {{ $selected === 'diterima' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("diterima")'>Diterima</button>
-            <button class="font-semibold text-base sm:text-lg {{ $selected === 'diproses' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("diproses")'>Diproses</button>
-            <button class="font-semibold text-base sm:text-lg {{ $selected === 'selesai' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("selesai")'>Selesai</button>
-            <button class="font-semibold text-base sm:text-lg {{ $selected === 'ditolak' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("ditolak")'>Ditolak</button>
+        <div class=" flex justify-between max-w-sm sm:max-w-lg grow">
+            <button class="font-semibold text-xs sm:text-lg {{ $selected === 'diajukan' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("diajukan")'>Diajukan: {{$jumlahDiajukan}} </button>
+            <button class="font-semibold text-xs sm:text-lg {{ $selected === 'diterima' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("diterima")'>Diterima: {{$jumlahDiterima}}</button>
+            <button class="font-semibold text-xs sm:text-lg {{ $selected === 'diproses' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("diproses")'>Diproses : {{$jumlahDiproses}}</button>
+            <button class="font-semibold text-xs sm:text-lg {{ $selected === 'selesai' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("selesai")'>Selesai: {{$jumlahSelesai}}</button>
+            <button class="font-semibold text-xs sm:text-lg {{ $selected === 'ditolak' ? 'text-[#0FB5A1] underline' : 'text-[#585858]' }}" wire:click='getAduan("ditolak")'>Ditolak: {{$jumlahDitolak}}</button>
         </div>
 
         <a href="/aduan/create-laporan" class="hidden px-4 py-2 rounded-md bg-[#0FB5A1] text-white sm:block hover:bg-[#0D9C8B] font-semibold" type="submit" class="">buat laporan</a>

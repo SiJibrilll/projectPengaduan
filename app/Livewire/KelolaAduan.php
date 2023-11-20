@@ -11,10 +11,21 @@ class KelolaAduan extends Component
 
     public $aduan = [];
     public $selected = 'diajukan';
+    public $jumlahDiajukan = 0;
+    public $jumlahDiterima = 0;
+    public $jumlahDiproses = 0;
+    public $jumlahSelesai = 0;
+    public $jumlahDitolak = 0;
     
     // -- to set inital state
     function mount() {
         $this->aduan = Aduan::where('status', 'diajukan')->get();
+
+        $this->jumlahDiajukan =  Aduan::where('status', 'diajukan')->count();
+        $this->jumlahDiterima =  Aduan::where('status', 'diterima')->count();
+        $this->jumlahDiproses =  Aduan::where('status', 'diproses')->count();
+        $this->jumlahSelesai =  Aduan::where('status', 'selesai')->count();
+        $this->jumlahDitolak =  Aduan::where('status', 'ditolak')->count();
     }
 
     // -- method to check if request comes from admin or petugas
